@@ -1,6 +1,7 @@
 #include "kernel/types.h"
 #include "user/user.h"
 #include "kernel/fcntl.h"
+#include <stddef.h>
 
 /* Read a line of characters from stdin. */
 int getcmd(char *buf, int nbuf) {
@@ -32,8 +33,8 @@ void run_command(char *buf, int nbuf, int *pcp) {
 
   int redirection_left = 0;
   int redirection_right = 0;
-  //char *file_name_l = 0;
-  //char *file_name_r = 0;
+  char *file_name_l = 0;
+  char *file_name_r = 0;
 
   //int p[2];
   int pipe_cmd = 0;
@@ -174,7 +175,7 @@ int main(void) {
 
     //int exit_status = WEXITSTATUS(child_status);
 
-    if(child_status_status == 2){
+    if(child_status == 2){
         char new_directory[100];
 
         read(pcp[0], new_directory, sizeof(new_directory)); // read the new directory from the pipe
