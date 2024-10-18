@@ -33,8 +33,8 @@ void run_command(char *buf, int nbuf, int *pcp) {
 
   int redirection_left = 0;
   int redirection_right = 0;
-  char *file_name_l = 0;
-  char *file_name_r = 0;
+  //char *file_name_l = 0;
+  //char *file_name_r = 0;
 
   //int p[2];
   int pipe_cmd = 0;
@@ -64,10 +64,10 @@ void run_command(char *buf, int nbuf, int *pcp) {
         pipe_cmd = 1;
       } else if (c == '<') {
         redirection_left = 1;
-        file_name_l = &buf[i + 1];  // Next token will be the input file
+        //file_name_l = &buf[i + 1];  // Next token will be the input file
       } else if (c == '>') {
         redirection_right = 1;
-        file_name_r = &buf[i + 1];  // Next token will be the output file
+        //file_name_r = &buf[i + 1];  // Next token will be the output file
       } else if (c == ';') {
         sequence_cmd = 1;
       }
