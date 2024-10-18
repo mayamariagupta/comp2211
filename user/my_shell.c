@@ -9,7 +9,7 @@ int getcmd(char *buf, int nbuf) {
     gets(buf, nbuf);
 
     if (buf[0] == 0){
-        return -1    //handle and empty command
+        return -1;    //handle and empty command
     }
 
   return 0;
@@ -26,16 +26,16 @@ void run_command(char *buf, int nbuf, int *pcp) {
   char *arguments[10];
   int numargs = 0;
   /* Word start/end */
-  int ws = 1;
-  int we = 0;
-  char *token_start
+  int ws = 0;
+  //int we = 0;
+  char *token_start = NULL;
 
   int redirection_left = 0;
   int redirection_right = 0;
-  char *file_name_l = 0;
-  char *file_name_r = 0;
+  //char *file_name_l = 0;
+  //char *file_name_r = 0;
 
-  int p[2];
+  //int p[2];
   int pipe_cmd = 0;
 
   int sequence_cmd = 0;
@@ -145,7 +145,7 @@ void run_command(char *buf, int nbuf, int *pcp) {
     if (pipe_cmd) {
       // ##### Place your code here.
     } else {
-        exec(arguments[0], arguments)
+        exec(arguments[0], arguments);
       // ##### Place your code here.
     }
   }
@@ -172,9 +172,9 @@ int main(void) {
     int child_status;
     wait(&child_status);
 
-    int exit_status = WEXITSTATUS(child_status);
+    //int exit_status = WEXITSTATUS(child_status);
 
-    if(exit_status == 2){
+    if(child_status_status == 2){
         char new_directory[100];
 
         read(pcp[0], new_directory, sizeof(new_directory)); // read the new directory from the pipe
